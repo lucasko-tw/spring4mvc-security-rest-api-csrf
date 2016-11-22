@@ -59,18 +59,56 @@ The response is:
 	X-Content-Type-Options: nosniff
 	X-CSRF-HEADER: X-CSRF-TOKEN
 	X-CSRF-PARAM: _csrf
-	Set-Cookie: JSESSIONID=E528551A3AB8C58450BD54EA9D108275; Path=/spring4mvc-security-rest-api-csrf/
-	X-CSRF-TOKEN: 5b3ea412-ca7c-4150-a4c3-88d6f6abdbfa
+	Set-Cookie: JSESSIONID=2EC4C8E47EE49DF5BBA4764EDE5B5AC0; Path=/spring4mvc-security-rest-api-csrf/
+	X-CSRF-TOKEN: ffa9430d-1cd9-49b5-b36f-60c5097bf99f
 	Content-Type: application/json;charset=utf-8
 	Content-Length: 48
-	Date: Sun, 20 Nov 2016 08:19:52 GMT
+	Date: Tue, 22 Nov 2016 14:31:33 GMT
 
-	{"_csrf":"5b3ea412-ca7c-4150-a4c3-88d6f6abdbfa"}
+	{"_csrf":"ffa9430d-1cd9-49b5-b36f-60c5097bf99f"}
+
+You will obtain a _cstf value, and this csrf token is just only for JSESSION this time.
 
 
-Finally, you can call post api with _csrf token.
 
-	
+### Go get data from admin API
+
+1. set JSESSIONID
+2. set _csrf
+
+
+The request is:
+
+
+	curl -i -X POST --cookie JSESSIONID=2EC4C8E47EE49DF5BBA4764EDE5B5AC0  -d _csrf=ffa9430d-1cd9-49b5-b36f-60c5097bf99f -d username=admin -d password=P@ssw0rd   http://localhost:8080/spring4mvc-security-rest-api-csrf/login
+
+
+
+The response is:
+
+
+	HTTP/1.1 200 OK
+	Server: Apache-Coyote/1.1
+	Access-Control-Allow-Origin: http://localhost:8080
+	Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+	Access-Control-Allow-Headers: Authorization
+	Access-Control-Max-Age: 1800
+	Access-Control-Allow-Credentials: true
+	Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+	Pragma: no-cache
+	Expires: 0
+	X-XSS-Protection: 1; mode=block
+	X-Frame-Options: DENY
+	X-Content-Type-Options: nosniff
+	Set-Cookie: JSESSIONID=F6FEECFB7F4BCD4DC3FE243BFD32F177; Path=/spring4mvc-security-rest-api-csrf/
+	Content-Length: 65
+	Date: Tue, 22 Nov 2016 14:32:21 GMT
+
+
+
+
+
+
 
 
 
